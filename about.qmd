@@ -1,13 +1,40 @@
 ---
-title: "About"
+title: "Praj's Blog"
 image: profile.jpg
 about:
   template: jolla
   links:
     - icon: github
       text: Github
-      href: https://github.com/etc5523-2022
+      href: https://github.com/PrajaktaChavan0096
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/prajakta-chavan-3238b1191/
 
 ---
 
-This is a blog template for the ETC5523 Communicating with Data assessment at Monash University.
+This is a blog template for the **ETC5523 Communicating with Data** assessment at **Monash University**, showcasing my technical projects and skills developed through my academic journey and professional experience.
+
+## Projects
+
+### Virtual Air Drawing Using Gesture Detection
+In this project, I implemented a virtual air drawing tool that uses machine learning algorithms to detect finger movements on camera. The application includes a color palette and uses Python with OpenCV for image processing.
+
+### Hand Gesture Controlled Car
+This project involved developing a car that can be controlled using hand gestures, utilizing convolutional neural networks and image processing to track movements and send commands to the car.
+
+### Automated Toll Plaza System
+I contributed to a project for automating toll collection using image processing. This project was part of the Texas Instruments Innovation Challenge and helped streamline the toll collection process using camera inputs.
+
+## About Me
+
+I am currently pursuing a **Master's degree and Business Analytics** at **Monash University**, a leading global institution known for its excellence in education and research. My studies at Monash have provided me with a robust foundation in data analysis, machine learning, and business optimization techniques. Through courses like **ETC5523: Communicating with Data**, I have gained hands-on experience in transforming complex datasets into actionable insights and creating impactful data visualizations for decision-making.
+
+Before Monash, I completed my **Bachelor's degree in Computer Science** at Cummins College of Engineering, Pune, where I developed strong programming skills and completed various projects in image processing, neural networks, and software development.
+
+At Monash, I am honing my ability to leverage data-driven approaches to solve real-world business problems, positioning myself for impactful roles in the tech and business sectors.
+
+## Contact
+
+Feel free to connect with me on GitHub or LinkedIn. You can also reach out via email at pcha0096@student.monash.edu for any collaboration or project inquiries.
+---

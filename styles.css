@@ -1,4 +1,152 @@
-/* css styles */
+/* General Layout Styles */
+body {
+    font-family: "Karla", sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    word-spacing: 2px;
+    color: #333333;
+    background-color: #f7f7f7;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    text-transform: none;
+}
+
+/* Navbar and Title Banner Styles */
 .navbar-dark, .quarto-title-banner {
-  background-color: #006DAE;
+    background-color: #005A9C; /* Darker, professional blue */
+    color: #ffffff; /* White text for contrast */
+    padding: 15px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.navbar {
+    border-bottom: 3px solid #004080; /* Slightly darker border for distinction */
+}
+
+.navbar-title {
+    font-family: "PT Sans Narrow", sans-serif;
+    font-size: 1.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin: 0;
+}
+
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 15px;
+}
+
+.navbar a:hover {
+    color: #ffdd57; /* Accent color on hover */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "PT Sans Narrow", sans-serif;
+    color: #004080;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.75em;
+    margin-bottom: 8px;
+}
+
+h4, h5, h6 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+h4 {
+    font-weight: 600;
+}
+
+/* Links */
+a {
+    color: #005A9C;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #ffdd57; /* Yellow accent color on hover */
+    text-decoration: none;
+}
+
+/* Custom Button Style */
+button, .btn {
+    font-family: "PT Sans Narrow", sans-serif;
+    background-color: #005A9C;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: #ffdd57;
+    color: #004080;
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: 1.5em;
+    color: #333333;
+    font-size: 18px;
+}
+
+/* Footer */
+footer {
+    background-color: #004080;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-family: "Karla", sans-serif;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #ffdd57;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .navbar-title {
+        font-size: 1.5em;
+    }
+
+    body {
+        font-size: 16px;
+    }
 }

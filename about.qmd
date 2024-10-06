@@ -1,6 +1,6 @@
 ---
 title: "Praj's Blog"
-image: profile.jpg
+image: praj_profile.jpg
 about:
   template: jolla
   links:

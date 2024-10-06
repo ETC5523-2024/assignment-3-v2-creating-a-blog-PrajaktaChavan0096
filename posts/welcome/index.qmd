@@ -34,11 +34,11 @@ We used two datasets from **Our World in Data**:
      - `Year`: Year of observation
      - `Proportion of countries with high food prices`: Percentage of countries recording high food prices
 
-### Data Loading
 
-First, we load the datasets using the following code:
 
-```{r data-loading, echo=TRUE}
+
+
+```{r data-loading, echo=FALSE, warning=FALSE, message=FALSE}
 # Load necessary libraries
 library(tidyverse)
 
@@ -53,7 +53,7 @@ high_food_prices <- read_csv("share-of-countries-recording-high-food-prices.csv"
 
 The datasets were cleaned to remove missing values and ensure that only complete observations were included in the analysis.
 
-```{r}
+```{r data cleaning, echo=FALSE, warning=FALSE, message=FALSE}
 # Clean the datasets
 cleaned_food_expenditure <- food_expenditure %>%
   filter(!is.na(`Total food expenditure`))
@@ -70,7 +70,7 @@ cleaned_high_food_prices <- high_food_prices %>%
 
 The dataset on global food expenditure per person provides insights into how much people spend on food annually across different countries. The bar chart in Figure 1 shows the food expenditure per person for various countries in 2022.
 
-```{r}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 # Create a bar chart of food expenditure per person
 ggplot(cleaned_food_expenditure, aes(x = reorder(Entity, `Total food expenditure`), y = `Total food expenditure`)) +
   geom_bar(stat = "identity", fill = "lightblue") +
@@ -84,7 +84,7 @@ ggplot(cleaned_food_expenditure, aes(x = reorder(Entity, `Total food expenditure
 
 Table 1 shows the top 10 countries with the highest food expenditure per person.
 
-```{r}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 # Show top 10 countries with highest food expenditure
 top_10_expenditure <- cleaned_food_expenditure %>%
   arrange(desc(`Total food expenditure`)) %>%
@@ -101,7 +101,7 @@ knitr::kable(top_10_expenditure, col.names = c("Country", "Total Food Expenditur
 
 The proportion of countries experiencing abnormally high or moderately high food prices increased significantly between 2011 and 2021, especially during 2020, as shown in Figure 2.
 
-```{r}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 # Create a bar chart for countries recording high food prices
 ggplot(cleaned_high_food_prices, aes(x = Year, 
                                      y = `2.c.1 - Proportion of countries recording abnormally high or moderately high food prices, according to the Indicator of Food Price Anomalies (%) - AG_FPA_HMFP - Abnormal: High food prices`,
@@ -119,11 +119,18 @@ ggplot(cleaned_high_food_prices, aes(x = Year,
 
 Table 2 shows the proportion of countries with abnormally high and moderately high food prices in 2020, the year with the most significant spike in high food prices.
 
-```{r}
-# Check the column names to ensure you're selecting the correct ones
-colnames(high_food_2020)
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 
-# Select only the necessary columns for the table
+# Ensure cleaned_high_food_prices is created correctly first
+cleaned_high_food_prices <- high_food_prices %>%
+  filter(!is.na(`2.c.1 - Proportion of countries recording abnormally high or moderately high food prices, according to the Indicator of Food Price Anomalies (%) - AG_FPA_HMFP - Abnormal: High food prices`)) %>%
+  filter(!is.na(`2.c.1 - Proportion of countries recording abnormally high or moderately high food prices, according to the Indicator of Food Price Anomalies (%) - AG_FPA_HMFP - Moderate: Moderately high food prices`))
+
+# Now filter for the year 2020
+high_food_2020 <- cleaned_high_food_prices %>%
+  filter(Year == 2020)
+
+# Select the relevant columns for the table
 high_food_2020_table <- high_food_2020 %>%
   select(Year,
          `2.c.1 - Proportion of countries recording abnormally high or moderately high food prices, according to the Indicator of Food Price Anomalies (%) - AG_FPA_HMFP - Abnormal: High food prices`,
@@ -132,6 +139,7 @@ high_food_2020_table <- high_food_2020 %>%
 # Display the table with appropriate column names
 knitr::kable(high_food_2020_table, 
              col.names = c("Year", "Abnormally High (%)", "Moderately High (%)"))
+
 
 ```
 

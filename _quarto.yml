@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "World on a Plate: Exploring Global Food Economics"
+  title: "Global Food Prices and Expenditure Patterns"
   navbar:
     right:
       - about.qmd
@@ -12,10 +12,10 @@ website:
 
 format:
   html:
-    theme: cosmo  # Bootstrap theme for modern design
-    css: styles.css  # Link to custom CSS for styling
+    theme: cosmo  # Bootstrap theme
+    css: styles.css  # Link to external CSS file
     toc: true  # Enable table of contents
-    toc-location: left  # TOC placed on the left for better navigation
+    toc-location: left  # Place TOC on the left for better navigation
     number-sections: true  # Number the sections for readability
 
 # Custom theming to enhance readability and aesthetics
@@ -23,90 +23,3 @@ editor_options:
   markdown:
     wrap: 72  # Improve readability in markdown editor
     color: auto  # Use adaptive color scheme
-
-# Custom CSS styles (Add this content in the styles.css file)
-/* Body Styles */
-body {
-  background-color: #f8f9fa;  /* Light gray background for improved readability */
-  font-family: 'Open Sans', sans-serif;  /* Clean and modern font */
-  font-size: 18px;
-  line-height: 1.6;
-  color: #333333;  /* Dark gray text for readability */
-}
-
-/* Heading Styles */
-h1, h2, h3 {
-  color: #0056b3;  /* Dark blue for headings */
-  font-weight: bold;
-}
-
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 15px;
-}
-
-h2 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-h3 {
-  font-size: 1.75em;
-  margin-bottom: 8px;
-}
-
-/* Navbar Styles */
-.navbar {
-  background-color: #004080;  /* Dark blue navbar */
-  color: white;  /* White text for contrast */
-}
-
-.navbar a {
-  color: white;  /* White links in the navbar */
-  font-weight: 600;  /* Make links bold */
-}
-
-.navbar a:hover {
-  color: #ffdd57;  /* Bright yellow hover effect */
-}
-
-/* Link Hover Effect */
-a:hover {
-  color: #ffdd57;  /* Bright yellow for link hover effect */
-  text-decoration: none;  /* Remove underline on hover */
-}
-
-/* Table of Contents Styles */
-.toc {
-  background-color: #e9ecef;  /* Light background for the TOC */
-  padding: 10px;
-  border-radius: 8px;
-}
-
-.toc a {
-  color: #0056b3;  /* Dark blue for TOC links */
-}
-
-.toc a:hover {
-  color: #ffdd57;  /* Bright yellow hover effect in TOC */
-}
-
-/* Footer Styles */
-footer {
-  background-color: #004080;  /* Dark blue footer */
-  color: white;  /* White text */
-  padding: 20px;
-  text-align: center;
-}
-
-footer a {
-  color: #ffdd57;  /* Bright yellow links in the footer */
-}
-
-footer a:hover {
-  text-decoration: underline;  /* Underline links on hover in the footer */
-}
-
-
-
-

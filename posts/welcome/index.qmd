@@ -24,19 +24,14 @@ The fluctuation of global food prices, driven by economic and environmental fact
 
 We used two datasets from **Our World in Data**:
 
-1. **Global Food Expenditure per Person (2022)**: This dataset provides the annual expenditure on food per person across various countries.
-   - **Key Variables**: 
-     - `Entity`: Country name
-     - `Total food expenditure`: Total food expenditure per person (USD)
-
-2. **Proportion of Countries Recording High Food Prices (2011-2021)**: This dataset tracks the percentage of countries experiencing abnormally or moderately high food prices from 2011 to 2021.
-   - **Key Variables**:
-     - `Year`: Year of observation
-     - `Proportion of countries with high food prices`: Percentage of countries recording high food prices
-
-
-
-
+1.  **Global Food Expenditure per Person (2022)**: This dataset provides the annual expenditure on food per person across various countries.
+    -   **Key Variables**:
+        -   `Entity`: Country name
+        -   `Total food expenditure`: Total food expenditure per person (USD)
+2.  **Proportion of Countries Recording High Food Prices (2011-2021)**: This dataset tracks the percentage of countries experiencing abnormally or moderately high food prices from 2011 to 2021.
+    -   **Key Variables**:
+        -   `Year`: Year of observation
+        -   `Proportion of countries with high food prices`: Percentage of countries recording high food prices
 
 ```{r data-loading, echo=FALSE, warning=FALSE, message=FALSE}
 # Load necessary libraries
@@ -47,7 +42,6 @@ food_expenditure <- read_csv("food-expenditure-per-person-per-year.csv")
 
 high_food_prices <- read_csv("share-of-countries-recording-high-food-prices.csv")
 ```
-
 
 ### Data Cleaning
 
@@ -151,11 +145,8 @@ In terms of food price volatility, the data shows that many countries experience
 
 ### Key Findings
 
-Food Expenditure: Wealthier nations, such as the United States and Switzerland, spend significantly more on food per person compared to lower-income nations (see Figure 1 and Table 1).
-High Food Prices: 2020 saw a significant spike in countries experiencing abnormally high food prices (see Figure 2), underscoring the vulnerability of food markets during global crises.
+Food Expenditure: Wealthier nations, such as the United States and Switzerland, spend significantly more on food per person compared to lower-income nations (see Figure 1 and Table 1). High Food Prices: 2020 saw a significant spike in countries experiencing abnormally high food prices (see Figure 2), underscoring the vulnerability of food markets during global crises.
 
 ### References
 
 Our World in Data. (2023). Global food prices and expenditure patterns. Our World in Data. https://ourworldindata.org/food-prices
-
-

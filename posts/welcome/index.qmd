@@ -62,7 +62,7 @@ cleaned_high_food_prices <- high_food_prices %>%
 
 #### Food Expenditure per Person
 
-The dataset on global food expenditure per person provides insights into how much people spend on food annually across different countries. The bar chart in [Figure 1](#fig-expenditure) shows the food expenditure per person for various countries in 2022.
+The dataset on global food expenditure per person provides insights into how much people spend on food annually across different countries. The bar chart in [Figure 1]{#fig-expenditure} shows the food expenditure per person for various countries in 2022.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 # Create a bar chart of food expenditure per person
@@ -76,7 +76,7 @@ ggplot(cleaned_food_expenditure, aes(x = reorder(Entity, `Total food expenditure
 
 ```
 
-[Table 1](#tbl-top10) shows the top 10 countries with the highest food expenditure per person.
+[Table 1]{#tbl-top10} shows the top 10 countries with the highest food expenditure per person.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 # Show top 10 countries with highest food expenditure
@@ -93,7 +93,7 @@ knitr::kable(top_10_expenditure, col.names = c("Country", "Total Food Expenditur
 
 #### Proportion of Countries with High Food Prices
 
-The proportion of countries experiencing abnormally high or moderately high food prices increased significantly between 2011 and 2021, especially during 2020, as shown in [Figure 2](#fig-high-food-prices).
+The proportion of countries experiencing abnormally high or moderately high food prices increased significantly between 2011 and 2021, especially during 2020, as shown in [Figure 2]{#fig-high-food-prices}.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 # Create a bar chart for countries recording high food prices
@@ -111,7 +111,7 @@ ggplot(cleaned_high_food_prices, aes(x = Year,
 
 ```
 
-[Table 2](#tbl-high-food-2020) shows the proportion of countries with abnormally high and moderately high food prices in 2020, the year with the most significant spike in high food prices.
+[Table 2]{#tbl-high-food-2020} shows the proportion of countries with abnormally high and moderately high food prices in 2020, the year with the most significant spike in high food prices.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 

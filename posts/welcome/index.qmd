@@ -1,12 +1,153 @@
 ---
-title: "Welcome To My Blog Template"
-author: "Emi Tanaka"
-date: "2022-07-18"
-categories: [news]
+title: "Global Food Prices and Expenditure Patterns"
+author: "Prajakta Chavan"
+date: "2024-10-03"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+categories: [analysis]
+image: "food-expenditure-per-person-per-year.png"
 ---
 
-This is the first post in a Quarto blog. Welcome!
+### Executive Summary
 
-![](thumbnail.jpg)
+This blog analyzes global food expenditure per person and the proportion of countries recording high food prices. These datasets highlight disparities in food expenditure across nations, as well as the impact of food price volatility in recent years.
+
+### Problem Description
+
+The fluctuation of global food prices, driven by economic and environmental factors, poses a significant challenge, particularly for lower-income nations. This analysis explores two main aspects: how much people spend on food in different countries and how high food prices have impacted countries globally.
+
+![Global Food Expenditure per Person](food-expenditure-per-person-per-year.png)
+
+### Data Description
+
+We used two datasets from **Our World in Data**:
+
+1. **Global Food Expenditure per Person (2022)**: This dataset provides the annual expenditure on food per person across various countries.
+   - **Key Variables**: 
+     - `Entity`: Country name
+     - `Total food expenditure`: Total food expenditure per person (USD)
+
+2. **Proportion of Countries Recording High Food Prices (2011-2021)**: This dataset tracks the percentage of countries experiencing abnormally or moderately high food prices from 2011 to 2021.
+   - **Key Variables**:
+     - `Year`: Year of observation
+     - `Proportion of countries with high food prices`: Percentage of countries recording high food prices
+
+### Data Loading
+
+First, we load the datasets using the following code:
+
+```{r data-loading, echo=TRUE}
+# Load necessary libraries
+library(tidyverse)
+
+# Load the datasets
+food_expenditure <- read_csv("food-expenditure-per-person-per-year.csv")
+
+high_food_prices <- read_csv("share-of-countries-recording-high-food-prices.csv")
+```
+
+
+### Data Cleaning
+
+The datasets were cleaned to remove missing values and ensure that only complete observations were included in the analysis.
+
+```{r}
+# Clean the datasets
+cleaned_food_expenditure <- food_expenditure %>%
+  filter(!is.na(`Total food expenditure`))
+
+cleaned_high_food_prices <- high_food_prices %>%
+  filter(!is.na(`2.c.1 - Proportion of countries recording abnormally high or moderately high food prices, according to the Indicator of Food Price Anomalies (%) - AG_FPA_HMFP - Abnormal: High food prices`)) %>%
+  filter(!is.na(`2.c.1 - Proportion of countries recording abnormally high or moderately high food prices, according to the Indicator of Food Price Anomalies (%) - AG_FPA_HMFP - Moderate: Moderately high food prices`))
+
+```
+
+### Analysis
+
+#### Food Expenditure per Person
+
+The dataset on global food expenditure per person provides insights into how much people spend on food annually across different countries. The bar chart in Figure 1 shows the food expenditure per person for various countries in 2022.
+
+```{r}
+# Create a bar chart of food expenditure per person
+ggplot(cleaned_food_expenditure, aes(x = reorder(Entity, `Total food expenditure`), y = `Total food expenditure`)) +
+  geom_bar(stat = "identity", fill = "lightblue") +
+  coord_flip() +
+  labs(title = "Food Expenditure per Person by Country (2022)",
+       x = "Country",
+       y = "Total Food Expenditure (USD)") +
+  theme_minimal()
+
+```
+
+Table 1 shows the top 10 countries with the highest food expenditure per person.
+
+```{r}
+# Show top 10 countries with highest food expenditure
+top_10_expenditure <- cleaned_food_expenditure %>%
+  arrange(desc(`Total food expenditure`)) %>%
+  select(Entity, `Total food expenditure`) %>%  # Select relevant columns
+  head(10)
+
+# Display the table using knitr::kable
+knitr::kable(top_10_expenditure, col.names = c("Country", "Total Food Expenditure (USD)"))
+
+
+```
+
+#### Proportion of Countries with High Food Prices
+
+The proportion of countries experiencing abnormally high or moderately high food prices increased significantly between 2011 and 2021, especially during 2020, as shown in Figure 2.
+
+```{r}
+# Create a bar chart for countries recording high food prices
+ggplot(cleaned_high_food_prices, aes(x = Year, 
+                                     y = `2.c.1 - Proportion of countries recording abnormally high or moderately high food prices, according to the Indicator of Food Price Anomalies (%) - AG_FPA_HMFP - Abnormal: High food prices`,
+                                     fill = "Abnormally High")) +
+  geom_bar(stat = "identity", position = "stack") +
+  geom_bar(aes(y = `2.c.1 - Proportion of countries recording abnormally high or moderately high food prices, according to the Indicator of Food Price Anomalies (%) - AG_FPA_HMFP - Moderate: Moderately high food prices`, 
+               fill = "Moderately High"), stat = "identity", position = "stack") +
+  labs(title = "Proportion of Countries with High Food Prices (2011-2021)",
+       x = "Year",
+       y = "Proportion of Countries (%)") +
+  theme_minimal() +
+  scale_fill_manual(name = "Price Category", values = c("Abnormally High" = "purple", "Moderately High" = "tan"))
+
+```
+
+Table 2 shows the proportion of countries with abnormally high and moderately high food prices in 2020, the year with the most significant spike in high food prices.
+
+```{r}
+# Check the column names to ensure you're selecting the correct ones
+colnames(high_food_2020)
+
+# Select only the necessary columns for the table
+high_food_2020_table <- high_food_2020 %>%
+  select(Year,
+         `2.c.1 - Proportion of countries recording abnormally high or moderately high food prices, according to the Indicator of Food Price Anomalies (%) - AG_FPA_HMFP - Abnormal: High food prices`,
+         `2.c.1 - Proportion of countries recording abnormally high or moderately high food prices, according to the Indicator of Food Price Anomalies (%) - AG_FPA_HMFP - Moderate: Moderately high food prices`)
+
+# Display the table with appropriate column names
+knitr::kable(high_food_2020_table, 
+             col.names = c("Year", "Abnormally High (%)", "Moderately High (%)"))
+
+```
+
+### Conclusion
+
+This analysis of global food expenditure and food price volatility reveals the economic disparities faced by countries around the world. Wealthier nations tend to have higher food expenditure per person, but their overall share of income spent on food is lower than that of lower-income countries.
+
+In terms of food price volatility, the data shows that many countries experienced abnormally high food prices in 2020, largely due to the global pandemic's impact on supply chains and economies.
+
+### Key Findings
+
+Food Expenditure: Wealthier nations, such as the United States and Switzerland, spend significantly more on food per person compared to lower-income nations (see Figure 1 and Table 1).
+High Food Prices: 2020 saw a significant spike in countries experiencing abnormally high food prices (see Figure 2), underscoring the vulnerability of food markets during global crises.
+
+### References
+
+Our World in Data. (2023). Global food prices and expenditure patterns. Our World in Data. https://ourworldindata.org/food-prices
 
 
